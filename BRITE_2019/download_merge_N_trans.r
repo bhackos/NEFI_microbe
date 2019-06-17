@@ -2,6 +2,9 @@ source("paths.r")
 library(neonUtilities)  
 library(neonNTrans) 
 
+
+
+
 NTR <- loadByProduct(site = "all", dpID = "DP1.10080.001", package = "basic", check.size = F)
 #NTR.new <- loadByProduct(site = "all", dpID = "DP1.10080.001", package = "expanded", check.size = F)
 
