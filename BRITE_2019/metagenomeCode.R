@@ -49,16 +49,18 @@ seq_2017 <- seq[substr(seq$collectDate, 1, 4) == "2017", ]
 # but2 <- but[complete.cases(but[ , 98]), ]
 # but3 <- but2[complete.cases(but2[, 63]), ]
 
+i <- 1622
+n_2017 <- n_2017[!duplicated(n_2017$uid.y),]
 
 n_2017$mergeSampleID <- NA
-for (i in 1:1708) {
+for (i in 1:nrow(n_2017)) {
+  print(i)
   samp <- n_2017$incubationPairID[i]
   samp_rows <- n_2017[n_2017$incubationPairID == samp, ]
   samp_first_date <- samp_rows[samp_rows$nTransBoutType=="tInitial",]$dateID
   mergeSampleID <- paste0(substr(samp_rows$sampleID[1], 1, 10), "-", samp_first_date)
   n_2017[n_2017$incubationPairID == samp,]$mergeSampleID <- mergeSampleID
 }
-
 # in sequence data, create ID with site/plot/year-month
 
 seq_2017$mergeSampleID <- NA
@@ -103,31 +105,17 @@ merge1 <- merge(n_2017, seq_2017, by = "mergeSampleID")
 newmerge <- merge1[!duplicated(as.list(merge1))]
 
 #N min
-p <- ggplot(newmerge, aes(x= siteID.x, y= netNminugPerGramPerDay)) +
+nmin_plot <- ggplot(newmerge, aes(x= siteID.x, y= netNminugPerGramPerDay)) +
   geom_boxplot()
-p
+nmin_plot
 
 #nitrification
-d <- ggplot(newmerge, aes(x= siteID.x, y= netNitugPerGramPerDay)) +
+nit_plot <- ggplot(newmerge, aes(x= siteID.x, y= netNitugPerGramPerDay)) +
   geom_boxplot()
-d
+nit_plot
 
 # save metadata 
-
-#### download code - make separate file ####
-
-# source functions:
-source("../NEFI_functions/tic_toc.r")
-
-# read in the file that Lee sent, with the urls
-
-# set a path for where things should download
-
-# loop through list of URLs
-# time the downloads
-# tic()
-# download
-# toc()
+saveRDS(nit_plot, meta_data_path)
 
 #### old
 
