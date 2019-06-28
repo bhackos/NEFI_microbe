@@ -1,3 +1,4 @@
+setwd("BRITE_2019/") # assumes you're in NEFI_microbe
 source("BRITE-paths.r")
 library(neonUtilities)  
 library(neonNTrans) 
