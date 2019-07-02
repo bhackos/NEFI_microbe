@@ -1,7 +1,5 @@
----
-title: "Metagenome Data"
-output: html_document
----
+
+####"Metagenome Data"  
 
 The goal of the download_merge_N_trans.r, metagenomeCode.r, and download_meta.r scripts is to interpret nitrogen data from soil samples, attribute increases in soil nitrogen to the bacteria taxa present in the soil samples, and download metagenome sequences from soil samples, respectively. 
 
