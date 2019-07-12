@@ -11,8 +11,6 @@
 
 cd /usr4/spclpgm/bhackos
 
-source activate sunbeam-tmp.pkm3BCVHjt 
-
 module load miniconda/4.5.12
 
 unset PYTHONPATH
