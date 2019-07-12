@@ -9,6 +9,14 @@
 
 #$ -m ae
 
-sunbeam run --configfile /projectnb/talbot-lab-data/NEFI_data/my_project/sunbeam_config.yml all_decontam
+cd /usr4/spclpgm/bhackos
+
+source activate sunbeam-tmp.pkm3BCVHjt 
+
+module load miniconda/4.5.12
+
+unset PYTHONPATH
+
+sunbeam run -- --configfile /projectnb/talbot-lab-data/NEFI_data/my_project/sunbeam_config.yml all_decontam
 
 
