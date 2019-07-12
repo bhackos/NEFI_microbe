@@ -13,6 +13,8 @@ cd /usr4/spclpgm/bhackos
 
 module load miniconda/4.5.12
 
+source activate sunbeam-tmp.pkm3BCVHjt
+
 unset PYTHONPATH
 
 sunbeam run -- --configfile /projectnb/talbot-lab-data/NEFI_data/my_project/sunbeam_config.yml all_decontam
