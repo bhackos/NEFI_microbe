@@ -9,7 +9,7 @@
 
 #$ -m ae
 
-cd /usr4/spclpgm/bhackos
+/projectnb/talbot-lab-data/NEFI_data/my_project2
 
 module load miniconda/4.5.12
 
