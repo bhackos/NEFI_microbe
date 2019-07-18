@@ -5,7 +5,7 @@
 
 #$ -l mem_total=125G -pe omp 16
 
-#$ -N DNA_decontam
+#$ -N DNA_assembly
 
 #$ -m ae
 
