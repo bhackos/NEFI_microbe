@@ -5,7 +5,7 @@
 
 #$ -l mem_total=125G -pe omp 16
 
-#$ -N DNA_assembly
+#$ -N DNA_co-assembly
 
 #$ -m ae
 
