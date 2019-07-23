@@ -13,7 +13,7 @@
 
 cd /usr4/spclpgm/bhackos
 
-cd /projectnb/talbot-lab-data/NEFI_data/my_project2
+cd /projectnb/talbot-lab-data/NEFI_data/metagenomes/my_project_short/
 
 module load miniconda/4.5.12
 
