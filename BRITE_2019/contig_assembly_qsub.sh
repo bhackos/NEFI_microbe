@@ -4,7 +4,7 @@
 
 #$ -l mem_total=125G -pe omp 16
 
-#$ -N DNA_report
+#$ -N DNA_contigs
 
 #$ -m ae
 
@@ -20,6 +20,7 @@ module load miniconda/4.5.12
 module load bowtie2 
 
 # how many threads should each mapping task use?
+
 NUM_THREADS=4
 
 for sample in `awk '{print $1}' samples.txt`
