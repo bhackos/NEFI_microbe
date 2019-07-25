@@ -13,29 +13,38 @@
 
 cd /usr4/spclpgm/bhackos
 
+#set directory where contig files are stored
 cd /projectnb/talbot-lab-data/NEFI_data/metagenomes/my_project_short/
 
+# read in the file in directory with contigs.fa
+#contig.file <- read.delim("fileName"")
+
+# set a path for where things should download
+
+#load necessary modules
 module load miniconda/4.5.12
+conda activate /projectnb/talbot-lab-data/NEFI_data/metagenomes/conda_env/anvio5
+module load bowtie2
+module load samtools
 
-module load bowtie2 
-
-# how many threads should each mapping task use?
-
-NUM_THREADS=4
-
-for sample in `awk '{print $1}' samples.txt`
-do
-    if [ "$sample" == "sample" ]; then continue; fi
+# loop through list of contigs
+  i <- 1
+  while (i < 35) {
+   
+    contig <- contig.file[i, 1]
+    SAMPLE <- as.character(substr(contig, 1, 19))
+    read1 -> "-comp_1.fastq"
+    read2 -> "-comp_2.fastq"
+    directory -> paste0("/projectnb/talbot-lab-data/NEFI_data/metagenomes/my_project_short/03_CONTIGS/", SAMPLE)
     
-    # you need to make sure you "ls 01_QC/*QUALITY_PASSED_R1*" returns R1 files for all your samples in samples.txt
-    R1s=`ls 01_QC/$sample*QUALITY_PASSED_R1* | python -c 'import sys; print ",".join([x.strip() for x in sys.stdin.readlines()])'`
-    R2s=`ls 01_QC/$sample*QUALITY_PASSED_R2* | python -c 'import sys; print ",".join([x.strip() for x in sys.stdin.readlines()])'`
-    
-    bowtie2 --threads $NUM_THREADS -x 04_MAPPING/contigs -1 $R1s -2 $R2s --no-unal -S 04_MAPPING/$sample.sam
-    samtools view -F 4 -bS 04_MAPPING/$sample.sam > 04_MAPPING/$sample-RAW.bam
-    anvi-init-bam 04_MAPPING/$sample-RAW.bam -o 04_MAPPING/$sample.bam
-    rm 04_MAPPING/$sample.sam 04_MAPPING/$sample-RAW.bam
-done
+    bowtie2-build /projectnb/talbot-lab-data/NEFI_data/metagenomes/my_project_short/03_CONTIGS/SAMPLE /projectnb/talbot-lab-data/NEFI_data/metagenomes/my_project_short/04_MAPPING/contigs1
+    i = i+1
+  }
 
-# mapping is done, and we no longer need bowtie2-build files
-rm 04_MAPPING/*.bt2
+bowtie2 --threads 4 -x /projectnb/talbot-lab-data/NEFI_data/metagenomes/my_project_short/04_MAPPING/contigs1 -1 /projectnb/talbot-lab-data/NEFI_data/metagenomes/my_project_short/01_QC/cleaned/BART_004-O-20140619-comp_1.fastq -2 /projectnb/talbot-lab-data/NEFI_data/metagenomes/my_project_short/01_QC/cleaned/BART_004-O-20140619-comp_2.fastq -S /projectnb/talbot-lab-data/NEFI_data/metagenomes/my_project_short/04_MAPPING/BART_004-O-20140619.sam
+
+samtools view -F 4 -bS /projectnb/talbot-lab-data/NEFI_data/metagenomes/my_project_short/04_MAPPING/BART_004-O-20140619.sam > 04_MAPPING/BART_004-O-20140619-RAW.bam
+
+anvi-init-bam 04_MAPPING/BART_004-O-20140619-RAW.bam -o 04_MAPPING/BART_004-O-20140619.bam
+
+rm 04_MAPPING/BART_004-O-20140619.sam 04_MAPPING/BART_004-O-20140619.bam
