@@ -15,6 +15,6 @@ This script loads in NEON nitrogen data from the product DP1.10080.001. Net nitr
 
 This script loads the output R script from the download_merge_N_trans.r script. Metadata for 2017 metagenomics sequencing is then downloaded from the NEON product DP1.10107.001. The nitrogen data is subset to 2017 collection dates only to match with the metagenomic sequence data colection dates. Metagenoic data is linked to nitrogen data through common colection dates and sample ID's. Data is analyzed through the creation of box plots relating net min nitrogen rates of soil cores to the different sites. Similarly, a box plot is made for net nitrogen rates. The plots are then saved as R scripts.   
 
-### download_meta.r  
+### download_metagenome_urls.r  
 
 This last script reads in a file containing information about microbial metagenome sequences. An output path is specified. The metagenome sequences are downloaded and their individual download times are calculated.

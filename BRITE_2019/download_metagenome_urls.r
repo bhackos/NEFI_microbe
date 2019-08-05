@@ -47,7 +47,7 @@ while (i < 35) {
   }  
 }
 
-# list the files that were downloaded
+# list the files that were downloaded. This is good for checking purposes. 
 url.vector <- list.files(path = "/projectnb/talbot-lab-data/NEFI_data/metagenomes/raw_sequences", pattern = NULL, all.files = FALSE,
            full.names = FALSE, recursive = FALSE,
            ignore.case = FALSE, include.dirs = FALSE, no.. = FALSE)
