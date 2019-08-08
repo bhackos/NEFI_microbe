@@ -3,9 +3,9 @@
 
 #$ -l h_rt=120:00:00
 
-#$ -l mem_total=125G -pe omp 16
+#$ -l mem_total=9G -pe omp 28
 
-#$ -N DNA_co-assembly
+#$ -N DNA_co-assembly_28
 
 #$ -m ae
 
