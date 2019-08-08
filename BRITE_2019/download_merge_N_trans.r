@@ -1,5 +1,5 @@
 source("BRITE_2019/BRITE-paths.r")
-library(neonUtilities)  
+library(neonUtilities)
 library(neonNTrans) 
 library(RCurl) # load "merge_left" function
 script <- getURL("https://raw.githubusercontent.com/zoey-rw/NEFI_microbe/master/NEFI_functions/merge_left.r")
