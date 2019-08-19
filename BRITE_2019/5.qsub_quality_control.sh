@@ -17,8 +17,6 @@ source activate sunbeam-tmp.pkm3BCVHjt
 
 unset PYTHONPATH
 
-sunbeam run -- --configfile /projectnb/talbot-lab-data/NEFI_data/metagenomes/2017_project/sunbeam_config.yml --unlock all_qc
-
 sunbeam run -- --configfile /projectnb/talbot-lab-data/NEFI_data/metagenomes/2017_project/sunbeam_config.yml all_qc
 
 
