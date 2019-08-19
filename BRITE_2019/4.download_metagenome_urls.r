@@ -35,70 +35,33 @@ url.vector <- list.files(path = "/projectnb/talbot-lab-data/NEFI_data/metagenome
            ignore.case = FALSE, include.dirs = FALSE, no.. = FALSE)
 
 
+
 # code that I used to change file names. Might be useful for reference. 
 
-# from1 <- url.vector
-# to1 <- character()
-# 
-# to1 <- list.files(path = "/projectnb/talbot-lab-data/NEFI_data/metagenomes/raw_sequences", pattern = NULL, all.files = FALSE,
-#                          full.names = FALSE, recursive = FALSE,
-#                          ignore.case = FALSE, include.dirs = FALSE, no.. = FALSE)
-# 
-# 
-#   
-# for (j in 1:length(url.vector)) {
-#   
-#   if (length(grep('gen', url.vector[j], value=TRUE)) != 0 ) {
-#     
-#     if (nchar(url.vector[j]) == 39 ) {
-#       
-#       c.url <-url.vector[j]
-#       front <- substr(c.url, 1, 11)
-#       middle <- substr(c.url, 18, 26)
-#       c <- "20131114-comp_"
-#       end <- substr(c.url, 29, 39)
-#       new <- paste0(front, c, end)
-#       to1[j] <- new
-# 
-#     }
-#     else {
-#       
-#       c.url <-url.vector[j]
-#       front <- substr(c.url, 1, 11)
-#       middle <- substr(c.url, 18, 26)
-#       c <- "comp-"
-#       end <- substr(c.url, 31, 41)
-#       new <- paste0(front, middle, c, end)
-#       to1[j] <- new
-#     }  
-#   }  
-#   
-#   else if (length(grep('Sequences', url.vector[j], value=TRUE)) != 0 ) {
-#     
-#     c.url<- url.vector[j]
-#     front <- substr(c.url, 1, 27)
-#     end <- ".fastq.gz"
-#     new <- paste0(front, end)
-#     to1[j] <- new
-#   }
-#   
-#   else {
-#     
-#     to1[j] <- url.vector[j]
-#   }
-#   
-# }    
-# 
-# to1[3] <- "DSNY_009-M-20131114-comp-R1.fastq.gz"  
-# 
-# 
-# from1 <- intersect(from1, to1)
-# 
-# newto1 <- sub('comp-', 'comp_', to1)
-# 
-# 
-# setwd("/projectnb/talbot-lab-data/NEFI_data/metagenomes/raw_sequences")
-# file.rename(to1, newto1)
+from1 <- url.vector
+to1 <- character()
+
+for (i in 1:length(url.vector)) {
+  
+  middle <- substr(url.vector[i], 21, 22)
+  front <- substr(url.vector[i], 1, 17)
+  end <- substr(url.vector[i], 19, 20)
+  sample <-paste0(front, middle, '_' ,end)
+  to1[i] <- sample
+  
+}
+
+#set directory to where sample files are located
+
+setwd("/projectnb/talbot-lab-data/NEFI_data/metagenomes/2017_raw_sequences")
+
+#rename files within that directory 
+file.rename(url.vector,to1)
+
+#Next firections:
+#create and activate sunbeam environment. Website for reference: https://sunbeam.readthedocs.io/en/latest/quickstart.html
+# create project in terminal using: sunbeam init 2017_project --data_fp /projectnb/talbot-lab-data/NEFI_data/metagenomes/2017_raw_sequences
+#where data_fp is the filepath of your sequences 
 
 
 
