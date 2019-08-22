@@ -7,7 +7,6 @@
 
 #$ -m ae
 
-
 cd /usr4/spclpgm/bhackos
 
 module load miniconda/4.5.12
