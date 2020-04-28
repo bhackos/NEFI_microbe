@@ -55,7 +55,7 @@ for (i in 1:nrow(raw_2017)) {
 #get rid of empty rows and NA columns
 raw_2017_sub <- raw_2017_sub[,c(1,2,3,4,5,6,7,8,9,10,12,13,14,15,18)]
 raw_2017_sub <- raw_2017_sub[complete.cases(raw_2017_sub), ]
-#only take three samples from each site
+#only take five samples from each site
 raw_2017_sub <- raw_2017_sub[c(1:6, 21:26, 45:50, 65:70, 105:110), ]
 
 raw_2017_sub$rawDataFilePath
